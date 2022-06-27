@@ -1,0 +1,159 @@
+:root {
+    --white: #fff;
+    --black: #222;
+    --green: #6cbe02;
+    --grey1: #f0f0f0;
+    --grey2: #e9d7d3;
+}
+
+
+/* Cart Items */
+
+.cart {
+    /* margin: 10rem auto; */
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+th {
+    text-align: left;
+    padding: 0.5rem;
+    color: #fff;
+    background-color: var(--green);
+    font-weight: normal;
+}
+
+td {
+    padding: 1rem 0.5rem;
+}
+
+td input {
+    width: 5rem;
+    height: 3rem;
+    padding: 0.5rem;
+}
+
+td a {
+    color: orangered;
+    font-size: 1.4rem;
+}
+
+td img {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 1rem;
+}
+
+.total-price {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.total-price table {
+    border-top: 3px solid var(--green);
+    width: 100%;
+    max-width: 35rem;
+}
+
+td:last-child {
+    text-align: right;
+}
+
+th:last-child {
+    text-align: right;
+}
+
+.checkout {
+    display: inline-block;
+    background-color: var(--green);
+    color: white;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.container {
+    max-width: 114rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+@media only screen and (max-width: 567px) {
+    .cart-info p {
+        display: none;
+    }
+}
+
+.box-cart {
+    display: flex;
+    padding: 1.25rem 0 3.125rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+}
+
+.left-cart {
+    display: block;
+    width: 180px;
+    flex-shrink: 0;
+}
+
+.left-cart .member-infor {
+    font-size: 12px;
+    line-height: 22px;
+    color: #424242;
+    letter-spacing: 0;
+}
+
+.left-cart .member-info>p {
+    line-height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 158px;
+    display: block;
+    overflow: hidden;
+}
+
+.left-cart .nav-container {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    font-size: 16px;
+    color: #424242;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+
+.left-cart .nav-container .item {
+    margin: 16px 0 0;
+}
+
+.left-cart .nav-container .item>a {
+    text-decoration: none;
+    color: #424242;
+}
+
+.left-cart .nav-container .item .item-container {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 16px;
+}
+
+.left-cart .nav-container .item .item-container .sub a {
+    cursor: pointer;
+    font-size: 14px;
+    color: #757575;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-decoration: none;
+}
