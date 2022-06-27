@@ -1,0 +1,63 @@
+/* @import "compass/css3"; */
+
+input[type="text"] {
+    font-size: .9em;
+    padding: .25em;
+}
+
+button {
+    border: 0;
+    /* color: #fff; */
+    padding: .5em 1.5em;
+    text-transform: uppercase;
+}
+
+button.add {
+    background: #75b348;
+    cursor: pointer;
+}
+
+button.canceladd {
+    background: #a9a9a9;
+}
+
+a {
+    color: #369;
+}
+
+.category {
+    /* border: 1px solid #222; */
+    width: 700px;
+}
+
+.subcategory {}
+
+span.subcat {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    line-height: 2em;
+    margin: .05em .5em;
+    position: relative;
+}
+
+span.subcat>span {
+    background: #ffe37c;
+    color: #fff;
+    cursor: pointer;
+    /* display: none; */
+    float: right;
+    line-height: 2em;
+    padding: 0.15em 1.0em;
+}
+
+span.subcat:hover {
+    border-bottom: 1px solid #ccc;
+}
+
+span.subcat:hover span {
+    /* //display: block; //hiding for now, must figure out what to do still */
+    background: #ffd439;
+}
+
+
+/* aaaa */
