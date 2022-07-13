@@ -86,25 +86,20 @@ textarea {
     padding: 5px;
 }
 
-.item:hover p,
-.item:hover i,
-.question:hover p,
-.question label:hover,
-input:hover::placeholder {
-    color: #ffe37c;
-}
-
 .item input:hover,
 .item select:hover,
 .item textarea:hover {
     border: 1px solid transparent;
     box-shadow: 0 0 6px 0 #ffe37c;
-    color: #ffe37c;
 }
 
 .item {
     position: relative;
     margin: 10px 0;
+}
+
+.error {
+    border: 1px solid #ff0000 !important;
 }
 
 .item i {
@@ -113,53 +108,8 @@ input:hover::placeholder {
     z-index: 1;
 }
 
-input[type=radio],
-input[type=checkbox] {
-    display: none;
-}
-
-label.radio {
-    position: relative;
-    display: inline-block;
-    margin: 5px 20px 15px 0;
-    cursor: pointer;
-}
-
 .question span {
     margin-left: 30px;
-}
-
-label.radio:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-}
-
-input[type=radio]:checked+label:before,
-label.radio:hover:before {
-    border: 2px solid #ffe37c;
-}
-
-label.radio:after {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: 5px;
-    width: 8px;
-    height: 4px;
-    border: 3px solid #ffe37c;
-    border-top: none;
-    border-right: none;
-    transform: rotate(-45deg);
-    opacity: 0;
-}
-
-input[type=radio]:checked+label:after {
-    opacity: 1;
 }
 
 .form_product #imgPreview {

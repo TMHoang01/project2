@@ -4,12 +4,32 @@
     // echo $sql
     $products = executeResult($sql);
 
+    $sql = "SELECT * from `type` ";
+    $types = executeResult($sql);
+    $sub_types = [];
+    foreach ($types as $type) {
+        if($type['id_parent'] == 0){
+            $sub_types[$type['id']] = $type['name'];
+            $sub_types[$type['id']] = [];
+        }else{
+            $sub_types[$type['id_parent']][] = $type['id'];
+        } 
+    }
+
+
+
+
 ?>
+  
+
 <link rel="stylesheet" type="text/css" href="./css/form_product.css">
 
 
 
 <h1 class="main-title">Sản phẩm</h1>
+<!-- <h1><?php echo json_encode($sub_types); ?></h1> -->
+
+
 <div class="add-new-item">
 
     <a class="link-button" id="btn_add_product" href="#box-popup"><i class="fas fa-plus-circle"></i>Thêm sản phẩm</a>
@@ -88,6 +108,10 @@
 
 
 <div class="show-form"></div>
+<script>
+    var sub_type = <?php echo json_encode($sub_types); ?>;
+    // console.log(sub_type);
+</script>
 
 <script type="text/javascript" src="./js/product.js">
 

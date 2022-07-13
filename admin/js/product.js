@@ -1,5 +1,58 @@
 // inti
 // $(".container-main").load("./product/product.php");
+// check form 
+function checkForm() {
+    console.log("submit in form product.php");
+    var name_product = $('#name_product').val();
+    var cost_product = $('#cost_product').val();
+    var upload_img = $('#upload_img').val();
+    var type_product = $('#type_product').val();
+    var sub_type_product = $('#sub_type_product').val();
+    var description_product = $('#description_product').val();
+    if (name_product == '') {
+        $('#name_product').addClass('error');
+    } else {
+        $('#name_product').removeClass('error');
+    }
+    if (cost_product == '') {
+        $('#cost_product').addClass('error');
+    } else {
+        $('#cost_product').removeClass('error');
+    }
+    if (upload_img == '') {
+        $('#upload_img').addClass('error');
+        console.log(" check anh ");
+
+    } else {
+        console.log(" check true anh");
+
+        $('#upload_img').removeClass('error');
+    }
+    if (type_product == 0) {
+        $('#type_product').addClass('error');
+    } else {
+        $('#type_product').removeClass('error');
+    }
+    if (sub_type_product == 0) {
+        $('#sub_type_product').addClass('error');
+    } else {
+        $('#sub_type_product').removeClass('error');
+    }
+    if (description_product == '') {
+        $('#description_product').addClass('error');
+    } else {
+        $('#description_product').removeClass('error');
+    }
+    if (name_product != '' && cost_product != '' && upload_img != '' && type_product != 0 && sub_type_product != 0) {
+        console.log(" check true");
+        return true;
+    } else {
+        console.log(" check FALSE");
+        alert("vui long dien day du thong tin");
+        return false;
+    }
+}
+
 
 $(document).ready(function() {
 
@@ -10,6 +63,11 @@ $(document).ready(function() {
 
             // add product
             $("form#add_product").submit(function(event) {
+                // checkForm
+                if (!checkForm()) {
+                    return false;
+                }
+
                 /* Act on the event */
                 event.preventDefault();
                 $("button#submit").prop('disabled', true);
@@ -29,7 +87,7 @@ $(document).ready(function() {
 
                     })
                     .done(function(response) {
-                        console.log(response['image']);
+                        // console.log(response['image']);
                         window.location.hash = "product";
 
                         let elemt = '<tr>' +
@@ -89,7 +147,7 @@ $(document).ready(function() {
         var id = $(this).data("id");
         var row_item = $(this).parents('tr');
 
-        console.log(id);
+        // console.log(id);
         $.ajax({
                 url: './product/find_product.php',
                 type: 'GET',
@@ -104,7 +162,11 @@ $(document).ready(function() {
                     var formEdit = $(".popup").find("form");
                     formEdit.find("input#name_product").val(data["name"]);
                     formEdit.find("input#cost_product").val(data["cost"]);
-                    formEdit.find("select#type_product  ").val(data["type_id"]);
+                    if (!data["id_parent"] == 0) {
+                        formEdit.find("select#type_product").val(data["id_parent"]);
+                        formEdit.find("select#sub_type_product").val(data["type_id"]);
+                    }
+
                     formEdit.find("input#id_product").val(data["id"]);
                     formEdit.find("input#image_product").val(data["image"]);
                     formEdit.find("textarea#description_product").val(data["description"]);

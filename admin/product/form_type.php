@@ -1,3 +1,5 @@
+<?php
+?>
 <link rel="stylesheet" href="./css/form_type_product.css">
 
 <!-- 

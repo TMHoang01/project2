@@ -1,4 +1,8 @@
-    <!--services------------------------->
+<?php
+
+?>
+
+<!--services------------------------->
     <section class="services">
         <!--services-box---------->
         <div class="services-box">

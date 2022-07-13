@@ -8,7 +8,7 @@
         $cost = $_POST['cost_product'];
         $id = $_POST['id_product'];
         $name = $_POST['name_product'];
-        $type = $_POST['type_product'];
+        $type = $_POST['sub_type_product'];
         $description = $_POST['description_product'];
         $file_name = '';
 

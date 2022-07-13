@@ -1,4 +1,5 @@
-
+<?php
+?>
 
     <!---login-and-sign-up--------------------------------->
     <div class="form">
@@ -46,22 +47,7 @@
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
 
 <script type="text/javascript">
-
-        // /*---For Login and Sign-up----------------------------*/
-        // $(document).on('click', '.user,.already-account', function() {
-        //     $('.form').addClass('login-active').removeClass('sign-up-active')
-        // });
-
-        // $(document).on('click', '.sign-up-btn', function() {
-        //     $('.form').addClass('sign-up-active').removeClass('login-active')
-        // });
-
-        // $(document).on('click', '.form-cancel', function() {
-        //     $('.form').removeClass('login-active').removeClass('sign-up-active')
-        // });
-        
-
-        
+     
                     
         $("#signin").submit(function(event) {
             event.preventDefault();
@@ -114,12 +100,4 @@
             });
         });
         
-        
-
-
-
-
-
-        
-
 </script>
