@@ -11,7 +11,4 @@ if(isset($_GET["id"])){
     echo "Xoa that bai";
 }
 
-
-
-
 // check data ajax resonpse T/F

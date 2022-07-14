@@ -14,7 +14,7 @@
     width: 100%;
 }
 
-table {
+.cart table {
     width: 100%;
     border-collapse: collapse;
 }
@@ -24,7 +24,7 @@ table {
     flex-wrap: wrap;
 }
 
-th {
+.cart table th {
     text-align: left;
     padding: 0.5rem;
     color: #fff;
@@ -32,22 +32,25 @@ th {
     font-weight: normal;
 }
 
-td {
+.cart table td {
     padding: 1rem 0.5rem;
 }
 
-td input {
+.cart table td input {
     width: 5rem;
     height: 3rem;
     padding: 0.5rem;
 }
 
-td a {
+.cart table td .btn-delete {
     color: orangered;
     font-size: 1.4rem;
+    border: none;
+    background: none;
+    margin-top: 12px;
 }
 
-td img {
+.cart table td img {
     width: 8rem;
     height: 8rem;
     margin-right: 1rem;

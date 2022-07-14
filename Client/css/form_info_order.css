@@ -1,0 +1,160 @@
+.container-form-info-order {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1200px) {
+    .container-form-info-order {
+        max-width: 1140px;
+    }
+}
+
+.container-form-info-order .d-flex {
+    display: flex;
+    flex-direction: row;
+    background: #f6f6f6;
+    border-radius: 0 0 5px 5px;
+    padding: 25px;
+}
+
+.container-form-info-order form {
+    flex: 4;
+}
+
+.container-form-info-order .Yorder {
+    flex: 2;
+}
+
+.container-form-info-order .title {
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
+    background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+    background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+    background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+    background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+    border-radius: 5px 5px 0 0;
+    padding: 20px;
+    color: #f6f6f6;
+}
+
+.container-form-info-order h2 {
+    margin: 0;
+    padding-left: 15px;
+}
+
+.container-form-info-order .required {
+    color: red;
+}
+
+.container-form-info-order label {
+    display: block;
+    margin: 15px;
+}
+
+.container-form-info-order table {
+    /* display: block; */
+    margin: 15px;
+}
+
+.container-form-info-order label>span {
+    float: left;
+    width: 25%;
+    margin-top: 4px;
+    padding-right: 10px;
+}
+
+.container-form-info-order input[type="email"] {
+    width: 70%;
+    height: 30px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dadada;
+    color: #888;
+}
+
+.container-form-info-order select {
+    width: 70%;
+    height: 30px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dadada;
+    color: #888;
+}
+
+.container-form-info-order input[type="text"] {
+    width: 70%;
+    height: 30px;
+    padding: 5px 10px;
+    /* margin-bottom: 10px; */
+    border: 1px solid #dadada;
+    color: #888;
+}
+
+.container-form-info-order input[type="tel"] {
+    width: 70%;
+    height: 30px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dadada;
+    color: #888;
+}
+
+.container-form-info-order select {
+    width: 72%;
+    height: 45px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+.container-form-info-order table {
+    margin: 0;
+    padding: 0;
+}
+
+.container-form-info-order th {
+    border-bottom: 1px solid #dadada;
+    padding: 10px 0;
+}
+
+.container-form-info-order tr>td:nth-child(1) {
+    text-align: left;
+    color: #2d2d2a;
+}
+
+.container-form-info-order tr>td:nth-child(2) {
+    text-align: right;
+    color: #52ad9c;
+}
+
+.container-form-info-order td {
+    border-bottom: 1px solid #dadada;
+    padding: 25px 25px 25px 0;
+}
+
+.container-form-info-order p {
+    display: block;
+    color: #888;
+    margin: 0;
+    padding-left: 25px;
+}
+
+.container-form-info-order .Yorder>div {
+    padding: 15px 0;
+}
+
+.container-form-info-order button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background: #52ad9c;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.container-form-info-order button:hover {
+    cursor: pointer;
+    background: #428a7d;
+}

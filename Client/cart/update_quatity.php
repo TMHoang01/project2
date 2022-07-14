@@ -10,6 +10,6 @@
         }else if($type =="sub"){
             $_SESSION['cart'][$id]['quatity'] --;
         }
-        echo json_encode( $_SESSION['cart'][$id]);
+        // echo json_encode( $_SESSION['cart'][$id]);
     }
 

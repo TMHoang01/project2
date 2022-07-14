@@ -16,7 +16,7 @@ $(document).ready(function($) {
         /* Act on the event */
         let id = $(this).data('id');
         setTimeout(function() {
-            alert("Đã thêm sản phẩm vài giỏ hàng").fadeOut('slow');
+            alert("Đã thêm sản phẩm vài giỏ hàng");
         }, 2000);
         $.ajax({
                 url: './cart/add_to_cart.php',
@@ -158,3 +158,47 @@ function totalCost() {
     });
     $('.total-cost').text(commaSeparateNumber(total));
 }
+
+
+// create order
+// $(document).ready(function() {
+//     $('#btn-create-order').click(function(event) {
+
+//         console.log("create order");
+//         /* Act on the event */
+//         let btn = $(this);
+//         // find items in cart
+//         let items = [];
+//         $('.span-quatity').each(function(index, el) {
+//             let quatity = $(this).text();
+//             let id = $(this).data('id');
+//             let cost = $(this).parents('tr').find('.span-cost').text();
+//             cost = cost.replace(",", "");
+//             cost = cost.replace(",", "");
+//             items.push({
+//                 id,
+//                 quatity,
+//                 cost
+//             });
+//         });
+
+//         console.log(JSON.stringify(items));
+
+//         $.ajax({
+//                 url: './cart/create_order.php',
+//                 type: 'GET',
+//                 // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+//                 data: items,
+//             })
+//             .done(function(response) {
+//                 console.log(JSON.stringify(response));
+//                 btn.parents('tr').remove();
+//                 totalCost();
+//             })
+//             .fail(function(response) {
+//                 console.log(JSON.stringify(response));
+//             })
+
+
+//     });
+// });

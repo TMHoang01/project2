@@ -15,7 +15,7 @@
     <title>Shopping Website</title>
     <!--fav-icon---------------->
     <link rel="shortcut icon" href="images/fav-icon.png" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <!--light-slider-files-->
     <!-- <link rel="stylesheet" href="css/lightslider.css"> -->
     <!--style----->
