@@ -58,6 +58,8 @@ $(document).ready(function() {
 
     //  add product
     $("#btn_add_product").click(function() {
+        $(".overlay").show();
+        $(".overlay").attr("style", "display: block;");
         $(".popup").load("./product/form_product.php", function(argument) {
             $(".popup").find('form').prop('id', 'add_product');
 
@@ -98,13 +100,13 @@ $(document).ready(function() {
                             '<td>' + response['name'] + '</td>' +
                             '<td>' + response['cost'] + '</td>' +
                             '<td>' +
-                            '<a class="link-button blue" data-id="' + response['id'] + '">Chi tiết</a>' +
+                            // '<a class="link-button blue" data-id="' + response['id'] + '">Chi tiết</a>' +
                             '<a class="link-button edit" href="#box-popup" data-id="' + response['id'] + '">Sửa</a>' +
                             '<a class="link-button red" data-id="' + response['id'] + '">Xóa</a>' +
                             '</td>' +
                             '</tr>'
                         $("table.styled-table>tbody").prepend(elemt);
-
+                        $(".overlay").hide();
 
                     })
                     .fail(function(response) {
@@ -144,6 +146,8 @@ $(document).ready(function() {
 
     // find product to edit product
     $("a.link-button.edit").click(function() {
+        // show box-up
+        $(".overlay").show();
         var id = $(this).data("id");
         var row_item = $(this).parents('tr');
 
@@ -155,16 +159,33 @@ $(document).ready(function() {
                 data: { id },
             })
             .done(function(data) {
-                console.log(data["name"]);
+                console.log(JSON.stringify(data));
                 $(".popup").load("./product/form_product.php", function() {
                     // body...
                     $(".popup").find(".banner").find("h2").text("Sửa sản phẩm");
                     var formEdit = $(".popup").find("form");
                     formEdit.find("input#name_product").val(data["name"]);
                     formEdit.find("input#cost_product").val(data["cost"]);
-                    if (!data["id_parent"] == 0) {
-                        formEdit.find("select#type_product").val(data["id_parent"]);
-                        formEdit.find("select#sub_type_product").val(data["type_id"]);
+                    if (!(data["id_parent"] == 0)) {
+                        formEdit.find("select#type_product").val(data["id_parent"]).trigger("#type_product");
+                        let sub_type_select = formEdit.find("select#sub_type_product");
+                        $.ajax({
+                            url: './type_product/get_sub_type.php',
+                            type: 'GET',
+                            data: {
+                                id_type: data["id_parent"]
+                            },
+                            success: function(response) {
+                                var sub_types = JSON.parse(response);
+                                console.log(sub_types);
+                                for (var i = 0; i < sub_types.length; i++) {
+                                    sub_type_select.append('<option value="' + sub_types[i].id + '">' + sub_types[i].name + '</option>');
+                                }
+                                sub_type_select.val(data["type_id"]);
+                                // console.log("p.js sub type ", data["type_id"], sub_types.type_id);
+                            }
+                        });
+
                     }
 
                     formEdit.find("input#id_product").val(data["id"]);
@@ -213,6 +234,32 @@ $(document).ready(function() {
             })
     });
 
+    // if #type_product change value, change #sub_type_product value
+    $('#type_product').change(function() {
+        var id_type = $(this).val();
+        console.log(id_type);
+        var sub_type_select = $('#sub_type_product');
+        sub_type_select.empty();
+        sub_type_select.append('<option value="0">Chọn loại</option>');
+        if (id_type != 0) {
+            $.ajax({
+                url: './type_product/get_sub_type.php',
+                type: 'GET',
+                data: {
+                    id_type: id_type
+                },
+                success: function(data) {
+                    var sub_types = JSON.parse(data);
+                    console.log(sub_types);
+                    for (var i = 0; i < sub_types.length; i++) {
+                        sub_type_select.append('<option value="' + sub_types[i].id + '">' + sub_types[i].name + '</option>');
+                    }
+                }
+            });
+        }
+
+
+    });
 
 
 });

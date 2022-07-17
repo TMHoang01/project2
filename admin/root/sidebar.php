@@ -64,11 +64,12 @@
                 
                 ?>
 
+
         <li class="menu-item" id="order">
-            <i class="fas fa-file-invoice"></i>  <span>Đơn hàng</span>
+            <i class="fa fa-file" aria-hidden="true"></i> <span>Đơn hàng</span>
         </li>
         <li class="menu-item" id="category">
-            <i class="fa fa-file" aria-hidden="true"></i> <span>Thể loại</span>
+            <i class="fas fa-file-invoice"></i>  <span>Thể loại</span>
         </li>
         <li class="menu-item">
             <a href="./login/sign_out.php" class="menu-link" onclick="return confirm('Bạn muốn đăng xuất ?');"><i
@@ -103,12 +104,12 @@
 
     $(document).ready(function(){
       $("#order").click(function(){
-        $(".container-main").load("./type_product/type.php");
+        $(".container-main").load("./order/order.php");
       });
     });
     $(document).ready(function(){
       $("#category").click(function(){
-        $(".container-main").load("./product/form_type.php");
+        $(".container-main").load("./type_product/type.php");
       });
     });
 

@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div id="box-popup" class="overlay">
+    <div id="box-popup" class="overlay" >
             <div class="popup">              
             </div>
     </div>

@@ -128,11 +128,11 @@ if(isset($_SESSION['cart']))
                     <form action="" method="">
                         <label>
                             <span class="fname">Tên <span class="required">*</span></span>
-                            <input type="text" name="name">
+                            <input type="text" name="name" value="<?php echo (isset($_SESSION['name_user']) ? $_SESSION['name_user']:'') ?>" >
                         </label>
                         <label>
                             <span class="lname">Điện thoại <span class="required">*</span></span>
-                            <input type="text" name="phonenumber">
+                            <input type="text" name="phonenumber" value="<?php echo (isset($_SESSION['phone_user']) ? $_SESSION['phone_user']:'') ?>">
                         </label>
                         <!-- <label>
                             <span>Company Name (Optional)</span>
@@ -141,7 +141,7 @@ if(isset($_SESSION['cart']))
 
                         <label>
                             <span>Địa chỉ <span class="required">*</span></span>
-                            <input type="text" name="address" placeholder="House number and street name" required>
+                            <input type="text" name="address" value="<?php echo (isset($_SESSION['address_user']) ? $_SESSION['address_user']:'') ?>" >
                         </label>
 
 
@@ -207,6 +207,5 @@ if(isset($_SESSION['cart']))
             }
         });
     });
-
 </script>
 

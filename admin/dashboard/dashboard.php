@@ -163,7 +163,7 @@
                     <td>Nam</td>
                     <td>2022-01-02</td>
                     <td>19.879.000₫</td>
-                    <td><a href="#box-popup" class="link-button" onclick="user_bill(1);">Xem</a></td>
+                    <td><a  class="link-button" onclick="user_bill(1);">Xem</a></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -171,7 +171,7 @@
                     <td>Nam</td>
                     <td>2022-01-26</td>
                     <td>₫1.278.000</td>
-                    <td><a href="#box-popup" class="link-button" onclick="user_bill(2);">Xem</a></td>
+                    <td><a  class="link-button" onclick="user_bill(2);">Xem</a></td>
                 </tr>
             </tbody>
         </table>

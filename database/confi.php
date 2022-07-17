@@ -38,7 +38,7 @@ function executeResult($sql){
     //querry
     $resultset = mysqli_query($conn,$sql);
     if (!$resultset) {
-        printf("Error: %s\n", mysqli_error($con));
+        printf("Error: %s\n", mysqli_error($conn));
     exit();
     }
     $rows = array();

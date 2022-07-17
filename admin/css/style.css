@@ -10,63 +10,6 @@ body {
     background: rgb(252, 252, 252);
 }
 
-
-/* @font-face {
-    font-family: 'San Francisco Display';
-    src: url('../fonts/SanFranciscoDisplay-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'San Francisco Display';
-    src: url('../fonts/SanFranciscoDisplay-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'San Francisco Display';
-    src: url('../fonts/SanFranciscoDisplay-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'San Francisco Display';
-    src: url('../fonts/SanFranciscoDisplay-Thin.woff') format('woff');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'San Francisco Display';
-    src: url('../fonts/SanFranciscoDisplay-Semibold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'San Francisco Display';
-    src: url('../fonts/SanFranciscoDisplay-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'San Francisco Display';
-    src: url('../fonts/SanFranciscoDisplay-Ultralight.woff') format('woff');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-} */
-
 .shadow-box {
     box-shadow: rgba(149, 157, 165, 0.2) 2px 2px 10px;
 }
@@ -80,7 +23,6 @@ body {
     position: sticky;
     background-color: #fff;
     top: 0px;
-    z-index: 99;
 }
 
 .container-menu {
@@ -129,7 +71,7 @@ body {
 * {
     box-sizing: border-box;
     font-family: San Francisco Display, sans-serif;
-    font-size: 14px;
+    /* font-size: 14px; */
     margin: 0;
     padding: 0;
 }
@@ -590,14 +532,14 @@ canvas#yearChart {
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
+    display: none;
 }
 
-.overlay:target {
+
+/* .overlay.show {
     visibility: visible;
     opacity: 1;
-}
+} */
 
 .popup {
     margin: 50px auto;
@@ -606,7 +548,7 @@ canvas#yearChart {
     border-radius: 5px;
     width: 80%;
     max-width: 80%;
-    max-height: 600px;
+    /* max-height: 600px; */
     position: relative;
     transition: all 3s ease-in-out;
     overflow: scroll;

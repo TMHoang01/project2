@@ -24,11 +24,13 @@ if(isset($_POST)){
 	}else{
 		if(count($res) == 1){
 			if($res[0]['password'] == $password ){
-				$_SESSION = [
+				$_SESSION[] = [
 					'signin' => true,
 					'id_user' => $res[0]["id"],
 					'name_user' => $res[0]["name"],
-					'email' => $email,
+					'phone_user' => $res[0]["phone"],
+					'address_user' => $res[0]["address"],
+					'email_user' => $email,
 				];
 				echo "Dng nhap thanh cong";
 				print_r($_SESSION);
@@ -42,8 +44,6 @@ if(isset($_POST)){
 	}
 
 	// print json_encode($res);
-
-
 
 }else{
 	echo 'sai roi';

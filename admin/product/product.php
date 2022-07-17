@@ -32,8 +32,8 @@
 
 <div class="add-new-item">
 
-    <a class="link-button" id="btn_add_product" href="#box-popup"><i class="fas fa-plus-circle"></i>Thêm sản phẩm</a>
-    <!-- <a class="link-button" id="btn_add_type" href="#box-popup" ><i class="fas fa-plus-circle"></i>Thể loại</a> -->
+    <a class="link-button" id="btn_add_product" ><i class="fas fa-plus-circle"></i>Thêm sản phẩm</a>
+    <!-- <a class="link-button" id="btn_add_type"  ><i class="fas fa-plus-circle"></i>Thể loại</a> -->
 
 
     <table class="styled-table">
@@ -66,7 +66,7 @@
                         <td>6 </td> -->
                         <td>
                             <a class="link-button blue" data-id="'.$each["id"].'">Chi tiết</a>
-                            <a class="link-button edit" href="#box-popup" data-id="'.$each["id"].'">Sửa</a>
+                            <a class="link-button edit" data-id="'.$each["id"].'">Sửa</a>
                             <a class="link-button red" data-id="'.$each["id"].'">Xóa</a>
                         </td>
                     </tr>';
@@ -83,7 +83,7 @@
                 <!-- <td>35 </td>
                 <td>9 </td> -->
                 <td>
-                    <a class="link-button blue" href="./view-infomation/item-information.php?id=1"> Xem chi tiet</a>
+                    <!-- <a class="link-button blue" href="./view-infomation/item-information.php?id=1"> Xem chi tiet</a> -->
                     <a class="link-button" href="./edit/edit_product.php?id=1"> Sua</a>
                     <a onclick="return confirm('Xac nhan xoa ?')" class="link-button red" href="?delete=1"> Xoa</a>
                 </td>
@@ -111,6 +111,7 @@
 <script>
     var sub_type = <?php echo json_encode($sub_types); ?>;
     // console.log(sub_type);
+
 </script>
 
 <script type="text/javascript" src="./js/product.js">

@@ -2,17 +2,9 @@
     require "../../database/confi.php";
 
 
-    $sql = "SELECT * from `type` ";
-    $types = executeResult($sql);
-    $sub_types = [];
-    foreach ($types as $type) {
-        if($type['id_parent'] == 0){
-            $sub_types[$type['id']] = $type['name'];
-            $sub_types[$type['id']] = [];
-        }else{
-            $sub_types[$type['id_parent']][] = $type['id'];
-        } 
-    }
+    $sql = "SELECT * from `type` where `id_parent` = 0";
+    $types_parent = executeResult($sql);
+
 ?>
 
 <!-- <div class="testbox" id="testbox"> -->
@@ -72,29 +64,11 @@
     </form>
 <!-- </div> -->
 <script type="text/javascript">
-    var sub_types = <?php echo json_encode($sub_types); ?>;
-    // sub_types = 
-    var name_types = <?php echo json_encode($types); ?>;
+
+    var types_parent = <?php echo json_encode($types_parent); ?>;
     // console.log(name_types);
 
-    // if #type_product change value, change #sub_type_product value
-    $('#type_product').change(function(){
-        var id_type = $(this).val();
-        console.log(id_type);
-        var sub_type_select = $('#sub_type_product');
-        sub_type_select.empty();
-        sub_type_select.append('<option value="0">Chọn loại</option>');
-        if(id_type != 0)
 
-        if(sub_types[id_type].length > 0){
-            // console.log(id_type);
-            for(var i = 0; i < sub_types[id_type].length; i++){
-                sub_type_select.append('<option value="'+sub_types[id_type][i]+'">'+name_types[sub_types[id_type][i] - 1]["name"]+'</option>');
-                // console.log(sub_types[id_type][i]);
-                // console.log(name_types[sub_types[id_type][i]]);
-            }
-        }
-    });
 
 
 
@@ -102,6 +76,9 @@
         // body...
         event.preventDefault();
         window.location.hash = "product";
+        $(".overlay").hide();
+        console.log("close");
+
 
     });
 

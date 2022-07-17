@@ -10,6 +10,7 @@ $(document).ready(function() {
                 year: valueSelected
             },
             success: function(result) {
+                $(".overlay").show();
                 $('#result').html(result);
             }
         });
