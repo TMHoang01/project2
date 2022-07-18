@@ -219,6 +219,7 @@ $(document).ready(function() {
                                 row_item.find("td.name").text(response['name_product']);
                                 row_item.find("td.cost").text(response['cost_product']);
                                 row_item.find("img").attr('src', './image/' + response['image_product']);
+                                $(".overlay").hide();
 
 
                             })
@@ -234,32 +235,7 @@ $(document).ready(function() {
             })
     });
 
-    // if #type_product change value, change #sub_type_product value
-    $('#type_product').change(function() {
-        var id_type = $(this).val();
-        console.log(id_type);
-        var sub_type_select = $('#sub_type_product');
-        sub_type_select.empty();
-        sub_type_select.append('<option value="0">Chọn loại</option>');
-        if (id_type != 0) {
-            $.ajax({
-                url: './type_product/get_sub_type.php',
-                type: 'GET',
-                data: {
-                    id_type: id_type
-                },
-                success: function(data) {
-                    var sub_types = JSON.parse(data);
-                    console.log(sub_types);
-                    for (var i = 0; i < sub_types.length; i++) {
-                        sub_type_select.append('<option value="' + sub_types[i].id + '">' + sub_types[i].name + '</option>');
-                    }
-                }
-            });
-        }
 
-
-    });
 
 
 });

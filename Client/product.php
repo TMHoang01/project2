@@ -3,6 +3,13 @@
     if(!isset($_SESSION)){
         session_start();
     }
+    if(isset( $_GET["product"] )){
+        $id = $_GET["product"];
+        $sql = "SELECT * from `product` where id = $id";
+        $product = executeResult($sql)[0];
+        // print_r($sql);
+        if(empty($product)) header("location:./");
+    }
 ?>
 
 
@@ -16,7 +23,7 @@
     <!--fav-icon---------------->
     <link rel="shortcut icon" href="./images/fav-icon.png" />
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/product.css">
+    <link rel="stylesheet" href="./css/product1.css">
 
     <!--style----->
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
@@ -27,77 +34,112 @@
 
 <body>
     <?php include './root/header.php'?>
-    <div class="container">
-        <!-- Left Column / Headphones Image -->
-        <div class="left-column">
-            <img data-image="black" src="https://s.fotorama.io/1.jpg" alt="">
-            <img data-image="blue" src="https://s.fotorama.io/1.jpg" alt="">
-            <img data-image="red" class="active" src="https://s.fotorama.io/1.jpg" alt="">
-        </div>
 
+    <div class="card-wrapper">
+        <div class="card">
+            <!-- card left -->
+            <div class="product-imgs">
+                <div class="img-display">
+                    <div class="img-showcase">
+                        <img src="<?php  echo "../admin/image/".$product['image']; ?>"
+                            alt="shoe image">
 
-        <!-- Right Column -->
-        <div class="right-column">
-
-            <!-- Product Description -->
-            <div class="product-description">
-                <span>Headphones</span>
-                <h1>Beats EP</h1>
-                <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation.
-                    Sturdy headband and on-ear cushions suitable for live performance</p>
-            </div>
-
-            <!-- Product Configuration -->
-            <div class="product-configuration">
-
-                <!-- Product Color -->
-                <div class="product-color">
-                    <span>Color</span>
-
-                    <div class="color-choose">
-                        <div>
-                            <input data-image="red" type="radio" id="red" name="color" value="red" checked>
-                            <label for="red"><span></span></label>
-                        </div>
-                        <div>
-                            <input data-image="blue" type="radio" id="blue" name="color" value="blue">
-                            <label for="blue"><span></span></label>
-                        </div>
-                        <div>
-                            <input data-image="black" type="radio" id="black" name="color" value="black">
-                            <label for="black"><span></span></label>
-                        </div>
                     </div>
-
                 </div>
 
-                <!-- Cable Configuration -->
-                <div class="cable-config">
-                    <span>Cable configuration</span>
-
-                    <div class="cable-choose">
-                        <button>Straight</button>
-                        <button>Coiled</button>
-                        <button>Long-coiled</button>
-                    </div>
-
-                    <a href="#">How to configurate your headphones</a>
-                </div>
             </div>
+            <!-- card right -->
+            <div class="product-content">
+                <h2 class="product-title"><?php echo $product['name'] ?> </h2>
+                <!-- <a href="#" class="product-link">visit nike store</a> -->
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.7(21)</span>
+                </div>
 
-            <!-- Product Pricing -->
-            <div class="product-price">
-                <span>148$</span>
-                <a href="#" class="cart-btn">Add to cart</a>
+                <div class="product-price">
+                    <!-- <p class="last-price">Old Price: <span>$257.00</span></p> -->
+                    <h2 class="new-price">Giá: <span><?php echo number_format( $product['cost']) ?> đ</span></h2>
+                </div>
+
+                <div class="product-detail">
+                    <h4>Thông tin sản phẩm: </h4>
+                    <p><?php echo str_replace(array("\r\n", "\n", "\r"),'<br>',$product['description']); ?></p>
+                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius.
+                        Dignissimos, labore suscipit. Unde.</p> -->
+                    <!-- <ul>
+                        <li>Color: <span>Black</span></li>
+                        <li>Available: <span>in stock</span></li>
+                        <li>Category: <span>Shoes</span></li>
+                        <li>Shipping Area: <span>All over the world</span></li>
+                        <li>Shipping Fee: <span>Free</span></li>
+                    </ul> -->
+                </div>
+
+                <div class="purchase-info">
+                    <!-- <input type="number" min="0" value="1"> -->
+                    <button type="button" class="btn" data-id="<?php echo $product['id']; ?>">
+                        Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <!-- <button type="button" class="btn">Compare</button> -->
+                </div>
+
+                <div class="social-links">
+                    <p>Share At: </p>
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-
     <?php include './root/footer.php'?>
+    <script>
+        $(document).ready(function($) {
+        $("button.btn").click(function(event) {
+            /* Act on the event */
+            let id = $(this).data('id');
+            // setTimeout(function(){
+                alert("Đã thêm sản phẩm vài giỏ hàng");
+            // }, 2000);
+            $.ajax({
+                    url: './cart/add_to_cart.php',
+                    type: 'GET',
+                    dataType: 'html',
+                    data: { id },
+                })
+                .done(function(data) {
+                    console.log("product in cart"+ data);
+                    $('num-cart-product').text(data);
+
+                })
+                .fail(function() {
+                    console.log("error");
+                })
 
 
+        });
+    });
+    </script>
 
+    
 </body>
 
 </html>

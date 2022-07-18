@@ -24,7 +24,7 @@ if(isset($_POST)){
 	}else{
 		if(count($res) == 1){
 			if($res[0]['password'] == $password ){
-				$_SESSION[] = [
+				$_SESSION['user'] = [
 					'signin' => true,
 					'id_user' => $res[0]["id"],
 					'name_user' => $res[0]["name"],

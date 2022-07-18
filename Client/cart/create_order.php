@@ -6,7 +6,7 @@ if(!isset($_SESSION)){
 }
 $cart = $_SESSION['cart'];
 // check session id_user and set customer_id
-    $customer_id = (isset($_SESSION['id_user']) ? $_SESSION['id_user'] : 'NULL');
+    $customer_id = (isset($_SESSION['user']['id_user']) ? $_SESSION['user']['id_user'] : 'NULL');
 
 $total_cost = 0;
 if(!empty($cart)){
@@ -23,8 +23,8 @@ if(!empty($cart)){
         $customer_name = $_POST['name'];
         $customer_phone = $_POST['phone'];
         $customer_address = $_POST['address'];
-        $_SESSION['phone_user'] = $customer_phone;
-        $_SESSION['address_user'] = $customer_address;
+        $_SESSION['user']['phone_user'] = $customer_phone;
+        $_SESSION['user']['address_user'] = $customer_address;
         $price = $_POST['price'];
         $time_order	 = date("Y-m-d H:i:s");
         $status = 0;

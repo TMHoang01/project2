@@ -388,8 +388,9 @@ nav {
     text-transform: uppercase;
     font-weight: 600;
     margin-top: 40px;
-    padding: 5px 30px;
-    border: 1px solid #e0e0e0;
+    padding: 5px 60px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .feature-box {
@@ -509,13 +510,17 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
+    max-width: 240px;
     padding: 10px 20px;
     border-top: 1px solid #f3f3f3;
 }
 
 .p-name {
     color: #727272;
+    justify-content: center;
+    text-align: center;
 }
 
 .p-price {
@@ -849,76 +854,22 @@ footer {
     }
 }
 
-@media(max-width:600px) {
-    .navigation {
-        padding: 10px;
-    }
-    .f-slider-text strong,
-    .banner-text strong {
-        font-size: 1.2rem;
-        line-height: 25px;
-    }
-    .full-slider-box,
-    .banner-box {
-        height: 30vh;
-    }
-    .f-slider-text span,
-    .banner-text span {
-        font-size: 0.8rem;
-    }
-    .f-slider-btn,
-    .banner-btn {
-        width: 120px;
-        height: 30px;
-        font-size: 0.8rem;
-    }
-    .feature-heading h2 {
-        font-size: 1.2rem;
-    }
-    .feature-box {
-        width: 120px;
-        height: 120px;
-    }
-    .new-arrival strong,
-    .feature-heading strong {
-        font-size: 1.2rem;
-    }
-    .new-arrival p,
-    .feature-heading p {
-        font-size: 0.8rem;
-        text-align: center;
-    }
-    .sale-box {
-        width: 100%;
-        height: 180px;
-    }
-    .sale {
-        width: 100%;
-    }
-    .services {
-        width: 100%;
-    }
-    .services-box {
-        width: 100%;
-    }
-    .copyright {
-        margin: 20px 0px;
-        text-align: center;
-    }
-    .subscribe {
-        width: 100%;
-    }
-    .subscribe form {
-        flex-wrap: nowrap;
-        display: flex;
-        width: 100%;
-    }
-    .subscribe input {
-        width: 100%;
-        flex-grow: 1;
-    }
-    .login-form,
-    .sign-up-form {
-        width: 90%;
-    }
+.pagination {
+    display: flex;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    margin: 0 6px;
+    text-decoration: none;
+    background-color: #868686;
+}
+
+.pagination a:hover {
+    background-color: #555555;
 }

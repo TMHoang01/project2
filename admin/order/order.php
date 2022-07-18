@@ -4,17 +4,20 @@
     if (isset($_GET['page'])) {
         $page = $_GET['page'] - 1;
     }
-    $limit = 5;
+    $limit = 67;
     $start = $page * $limit;
     $sql = "SELECT * from `order` ";
     if(isset($_GET['hide'])){
         $hide = $_GET['hide'];
         if($hide == 1){
             $sql .= "WHERE status = 0";
-            $limit = 100;
+            // $limit = 100;
         }
         
     }
+
+    $total_rows = count(executeResult($sql));
+    $total_pages = ceil($total_rows / $limit);
 
     $sql = $sql." ORDER BY id DESC LIMIT $start, $limit";
     // echo "<br>".$sql;
@@ -58,52 +61,26 @@
             <?php } ?>
 
 
-            <!-- <tr>
-                <td><a>24</a></td>
-                <td><a>ecec</a></td>
-                <td><a>0123456789</a></td>
-                <td><a>Ec ec</a></td>
-                <td><a>
-                        Chờ duyệt đơn </a>
-                </td>
-                <td>
-                    <a class="link-button"><i class="fas fa-check"></i>Duyệt</a>
-                    <a class="link-button"><i class="fas fa-times"></i>Hủy</a>
-                </td>
-            </tr> -->
-
-
-
 
         </tbody>
     </table>
 
     <div class="page_number_list">
         <?php
-        $sql = "SELECT * from `order`";
-        $total_rows = count(executeResult($sql));
-        $total_pages = ceil($total_rows / $limit);
+
         for ($i = 1; $i <= $total_pages; $i++) {
             echo '<div class="page_number"><a  data-page="' . $i . '">' . $i . '</a></div>';
         }
         ?>
 
 
-        <!-- <div class="page_number">
-            <a href="?page=1&amp;search=">1</a>
-        </div>
-
-        <div class="page_number">
-            <a href="?page=2&amp;search=">2</a>
-        </div>
-
-        <div class="page_number">
-            <a href="?page=3&amp;search=">3</a>
-        </div> -->
 
     </div>
 
 </div>
+<script>
+    var hide  = <?php echo $hide ?>;
+</script>
 
 <script src="./js/order.js">
 </script>

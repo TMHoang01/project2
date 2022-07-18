@@ -15,7 +15,7 @@ if(isset($_SESSION['cart']))
         <div class="member-info">
             <p><span>Xin chao,&nbsp;</span><br>
                 <strong><span>
-                        <?php   if(isset($_SESSION['name_user'])) echo $_SESSION['name_user']; ?>
+                        <?php   if(isset($_SESSION['user']['name_user'])) echo $_SESSION['user']['name_user']; ?>
                     </span></strong>
             </p>
         </div>
@@ -128,11 +128,11 @@ if(isset($_SESSION['cart']))
                     <form action="" method="">
                         <label>
                             <span class="fname">Tên <span class="required">*</span></span>
-                            <input type="text" name="name" value="<?php echo (isset($_SESSION['name_user']) ? $_SESSION['name_user']:'') ?>" >
+                            <input type="text" name="name" value="<?php echo (isset($_SESSION['user']['name_user']) ? $_SESSION['user']['name_user']:'') ?>" >
                         </label>
                         <label>
                             <span class="lname">Điện thoại <span class="required">*</span></span>
-                            <input type="text" name="phonenumber" value="<?php echo (isset($_SESSION['phone_user']) ? $_SESSION['phone_user']:'') ?>">
+                            <input type="text" name="phonenumber" value="<?php echo (isset($_SESSION['user']['phone_user']) ? $_SESSION['user']['phone_user']:'') ?>">
                         </label>
                         <!-- <label>
                             <span>Company Name (Optional)</span>
@@ -141,7 +141,7 @@ if(isset($_SESSION['cart']))
 
                         <label>
                             <span>Địa chỉ <span class="required">*</span></span>
-                            <input type="text" name="address" value="<?php echo (isset($_SESSION['address_user']) ? $_SESSION['address_user']:'') ?>" >
+                            <input type="text" name="address" value="<?php echo (isset($_SESSION['user']['address_user']) ? $_SESSION['user']['address_user']:'') ?>" >
                         </label>
 
 

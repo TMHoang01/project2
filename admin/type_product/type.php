@@ -105,7 +105,8 @@ $(document).ready(function() {
             '<a class="delete" ><i class="fa fa-trash"></i></a>' +
             '</div>' +
             '</li>';
-        $(this).parents('ul.category-tabs').find('ul.sub-category-tabs').append(row);
+        let new_row = $(this).parents('ul.category-tabs').find('ul.sub-category-tabs').append(row);;
+        new_row.find('input').focus();
         $(this).parents(".category-tabs").find('ul.sub-category-tabs li').eq(index + 1).find(" .edit")
             .toggle();
     });
@@ -223,26 +224,45 @@ $(document).ready(function() {
 
     // Delete row on delete button click
     $(document).on("click", ".delete", function() {
-        if (!confirm("Ban muon xoa khong?")) {
-            return false;
-        }
-        var btn_detele = $(this);
+        // check products in this category
         if(action) return false;
+        action = true;
+        var btn_detele = $(this);
+        let id = $(this).data("id");
+
         $.ajax({
-            url: './type_product/delete_type.php',
+            url: './type_product/check_products.php',
             type: 'GET',
             data: {
-                id: $(this).data('id')
+                id: id
             },
             success: function(data){
-                // console.log(data);
-                btn_detele.parent().parent().remove();
+                if (data == "0") {
+                    alert("Không thể xóa danh mục này vì có sản phẩm trong danh mục này");
+                    action = false;
+                    return false;
+                }else {
+                    if (!confirm("Ban muon xoa khong?")) {
+                        action = false;
+                        return false;
+                    }
+                }
+                $.ajax({
+                    url: './type_product/delete_type.php',
+                    type: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function(data){
+                        // console.log(data);
+                        btn_detele.parent().parent().remove();
 
-            }
-        }
-        );
-
-        $(".add-new").removeAttr("disabled");
+                    }
+                });
+                action = false;
+                $(".add-new").removeAttr("disabled");
+            }                    
+        });  
     });
 
 

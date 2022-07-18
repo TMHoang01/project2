@@ -28,13 +28,10 @@
         <!--menu----------------->
         <ul class="menu">
             <li><a href="./index.php">Home</a></li>
-            <li class="shop"><a href="#">Shop</a></li>
-            <li><a href="#">Áo</a>
-                <!--lable---->
-                <!-- <span class="sale-lable">Sale</span> -->
-            </li>
-            <li><a href="#">Quần</a></li>
-            <li><a href="#">Phụ kiện</a></li>
+            <!-- <li class="shop"><a href="#">Shop</a></li> -->
+            <li><a href="category.php?theloai=1">Áo</a></li>
+            <li><a href="category.php?theloai=2">Quần</a></li>
+            <li><a href="category.php?theloai=3">Phụ kiện</a></li>
         </ul>
         <!--right-menu----------->
         <div class="right-menu">
@@ -48,12 +45,12 @@
                     </i>
                 </a></li>
             <?php
-             		if(isset($_SESSION['signin'])){
-             			if($_SESSION['signin']){
+             		if(isset($_SESSION['user']['signin'])){
+             			if($_SESSION['user']['signin']){
              				echo '<li  class="user-signin">
 				                    <i class="fa fa-angle-down"></i>
                                     <div class="sub-user">
-                                        <div>Chao <strong>'.$_SESSION["name_user"].'</strong></div>
+                                        <div>Chao <strong>'.$_SESSION['user']["name_user"].'</strong></div>
                                         <a href="?cart">Don hang</a>
                                         <a href="./user/logout.php">Dang xuat</a>
                                     </div>

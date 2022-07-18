@@ -1,3 +1,5 @@
+ <?php
+ ?> 
   <div class="popup">
             <h2>Thông tin khách hàng</h2>
             <a class="close" href="#potential_customers">×</a>

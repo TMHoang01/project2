@@ -1,5 +1,12 @@
 $(document).ready(function() {
-    var hide = 0;
+    // var hide = 0;
+    console.log(hide, " hide");
+    if (hide == 0) {
+        $("#hide").text("Ẩn đơn đã xử lý");
+    } else {
+        $("#hide").text("Hiện tất cả đơn");
+    }
+
     $(".show-order").click(function() {
         var id = $(this).data('id');
         $.ajax({
@@ -21,7 +28,8 @@ $(document).ready(function() {
             url: "./order/order.php",
             type: "GET",
             data: {
-                page: page
+                page: page,
+                hide: hide
             },
             success: function(result) {
                 $('.container-main').html(result);

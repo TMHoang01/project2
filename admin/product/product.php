@@ -1,20 +1,26 @@
 <?php
     require "../../database/confi.php";
-    $sql = 'SELECT * FROM `product` ORDER BY `product`.`id` DESC limit 6';
-    // echo $sql
+    $sql = 'SELECT * FROM `product` ORDER BY `product`.`id` DESC';
+    // pagination
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $limit = 6;
+    $start = ($page - 1) * $limit;
+    $sql = $sql . " limit $start, $limit";
+
+
     $products = executeResult($sql);
 
-    $sql = "SELECT * from `type` ";
-    $types = executeResult($sql);
-    $sub_types = [];
-    foreach ($types as $type) {
-        if($type['id_parent'] == 0){
-            $sub_types[$type['id']] = $type['name'];
-            $sub_types[$type['id']] = [];
-        }else{
-            $sub_types[$type['id_parent']][] = $type['id'];
-        } 
-    }
+    // $sql = "SELECT * from `type` ";
+    // $types = executeResult($sql);
+    // $sub_types = [];
+    // foreach ($types as $type) {
+    //     if($type['id_parent'] == 0){
+    //         $sub_types[$type['id']] = $type['name'];
+    //         $sub_types[$type['id']] = [];
+    //     }else{
+    //         $sub_types[$type['id_parent']][] = $type['id'];
+    //     } 
+    // }
 
 
 
@@ -65,43 +71,30 @@
                         <!-- <td>28 </td>
                         <td>6 </td> -->
                         <td>
-                            <a class="link-button blue" data-id="'.$each["id"].'">Chi tiết</a>
+                            
                             <a class="link-button edit" data-id="'.$each["id"].'">Sửa</a>
                             <a class="link-button red" data-id="'.$each["id"].'">Xóa</a>
                         </td>
                     </tr>';
                 }
             ?>
-            <tr>
-                <td>1 </td>
-                <td>
-                    <img src="https://sixdo.vn/images/products/2022/large/_DSC5076say.jpg" alt=""
-                        style="width: 100px; border-radius: 5px;">
-                </td>
-                <td>Orange Sleeveless Midi Silk Dress </td>
-                <td>200.000 </td>
-                <!-- <td>35 </td>
-                <td>9 </td> -->
-                <td>
-                    <!-- <a class="link-button blue" href="./view-infomation/item-information.php?id=1"> Xem chi tiet</a> -->
-                    <a class="link-button" href="./edit/edit_product.php?id=1"> Sua</a>
-                    <a onclick="return confirm('Xac nhan xoa ?')" class="link-button red" href="?delete=1"> Xoa</a>
-                </td>
-            </tr>
+
 
 
         </tbody>
     </table>
 
-<!--     <div class="page_number_list">
-        <div class="page_number">
-            <a href="?page=1&amp;search=">1</a>
-        </div>
+    <div class="page_number_list">
+        <?php
+        $sql = "SELECT * from `product`";
+        $total_rows = count(executeResult($sql));
+        $total_pages = ceil($total_rows / $limit);
+        for ($i = 1; $i <= $total_pages; $i++) {
+            echo '<div class="page_number"><a  data-page="' . $i . '">' . $i . '</a></div>';
+        }
+        ?>
 
-        <div class="page_number">
-            <a href="?page=2&amp;search=">2</a>
-        </div>
-    </div> -->
+    </div>
 
 </div>
 
@@ -109,11 +102,23 @@
 
 <div class="show-form"></div>
 <script>
-    var sub_type = <?php echo json_encode($sub_types); ?>;
-    // console.log(sub_type);
-
+    $(document).ready(function() {
+        $('.page_number a').click(function() {
+            $('.page_number a').removeClass('active');
+            var page = $(this).data('page');
+            $.ajax({
+                url: './product/product.php',
+                type: 'GET',
+                data: {
+                    page: page
+                },
+                success: function(data) {
+                    $('.container-main').html(data);
+                }
+            });
+        });
+    });
 </script>
-
 <script type="text/javascript" src="./js/product.js">
 
 </script>
